@@ -1,11 +1,8 @@
-pfactors :: Integer -> [Integer]
+--pfactors :: Integer -> [Integer]
 pfactors 0 = []
 pfactors 1 = []
-pfactors n = [x | x <- [2..n], x < (ceiling sqrt n)]
+pfactors n = [x | x <- [2..n], x < (ceiling . sqrt $ fromIntegral n), (n `mod` x) == 0]
 
-                             
-                             
-                             
 bigNum = 600851475143
 
-answer = tail $ pfactors bigNum
+answer = last $ pfactors bigNum
